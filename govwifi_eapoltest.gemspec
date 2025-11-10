@@ -21,10 +21,10 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://www.wifi.service.gov.uk/"
   spec.files = Dir["{templates,lib}/**/*"]
   spec.require_paths = %w[lib templates]
-  spec.add_dependency "base64"
-  spec.add_dependency "benchmark"
-  spec.add_dependency "ostruct"
-  spec.add_dependency "rspec"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rubocop-govuk"
+  spec.add_dependency "base64", ">= 0.3.0"
+  spec.add_dependency "benchmark", ">= 0.5.0"
+  spec.add_dependency "ostruct", ">= 0.6.3"
+  spec.add_dependency "rspec", ">= 3.12.0"
+  spec.add_development_dependency "rake",   ">= 13.0.0"
+  spec.add_development_dependency "rubocop-govuk",  ">= 1.79.0"
 end
