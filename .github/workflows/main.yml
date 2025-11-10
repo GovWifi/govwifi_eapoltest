@@ -9,7 +9,7 @@ on:
 
 jobs:
   lint-and-test:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
@@ -36,12 +36,12 @@ jobs:
         run: |
           VERSION=$(ruby -e "puts eval(File.read('govwifi_eapoltest.gemspec')).version")
           GEM_VERSION=$(gem list --exact --remote govwifi_eapoltest)
-          
+
           if [ "${GEM_VERSION}" != "govwifi_eapoltest (${VERSION})" ]; then
             gem build govwifi_eapoltest.gemspec
             gem push "govwifi_eapoltest-${VERSION}.gem"
           fi
-          
+
           if ! git ls-remote --tags --exit-code origin v${VERSION}; then
             git tag v${VERSION}
             git push --tags
