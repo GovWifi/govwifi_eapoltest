@@ -12,19 +12,19 @@ Gem::Specification.new do |spec|
 
   spec.summary = "Test helpers for Freeradius"
   spec.description = "These are a set of helpers to test Freeradius."
-  spec.homepage = "https://github.com/alphagov/govwifi_eapoltest"
+  spec.homepage = "https://github.com/govwifi/govwifi_eapoltest"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.4.7"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://github.com/alphagov/govwifi_eapoltest"
+  spec.metadata["source_code_uri"] = "https://github.com/govwifi/govwifi_eapoltest"
   spec.metadata["changelog_uri"] = "https://www.wifi.service.gov.uk/"
   spec.files = Dir["{templates,lib}/**/*"]
   spec.require_paths = %w[lib templates]
-  spec.add_dependency "base64"
-  spec.add_dependency "benchmark"
-  spec.add_dependency "ostruct"
-  spec.add_dependency "rspec"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rubocop-govuk"
+  spec.add_dependency "base64", ">= 0.3.0"
+  spec.add_dependency "benchmark", ">= 0.5.0"
+  spec.add_dependency "ostruct", ">= 0.6.3"
+  spec.add_dependency "rspec", ">= 3.12.0"
+  spec.add_development_dependency "rake", ">= 13.0.0"
+  spec.add_development_dependency "rubocop-govuk", ">= 1.79.0"
 end
