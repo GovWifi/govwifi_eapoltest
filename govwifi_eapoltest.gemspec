@@ -25,6 +25,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "benchmark", ">= 0.5.0"
   spec.add_dependency "ostruct", ">= 0.6.3"
   spec.add_dependency "rspec", ">= 3.12.0"
-  spec.add_development_dependency "rake",   ">= 13.0.0"
-  spec.add_development_dependency "rubocop-govuk",  ">= 1.79.0"
+  spec.add_development_dependency "rake", ">= 13.0.0"
+  spec.add_development_dependency "rubocop-govuk", ">= 1.79.0"
 end
