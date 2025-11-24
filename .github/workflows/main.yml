@@ -1,4 +1,4 @@
-name: lint and test
+name: lint test and tag
 on:
   push:
     branches:
@@ -20,7 +20,7 @@ jobs:
       - name: Run tests
         run: bundle exec rspec spec
 
-  release:
+  tag-release:
     needs: lint-and-test
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -31,16 +31,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           rubygems: latest
-      - env:
-          GEM_HOST_API_KEY: ${{ secrets.ALPHAGOV_RUBYGEMS_API_KEY }}
-        run: |
+      - run: |
           VERSION=$(ruby -e "puts eval(File.read('govwifi_eapoltest.gemspec')).version")
-          GEM_VERSION=$(gem list --exact --remote govwifi_eapoltest)
-
-          if [ "${GEM_VERSION}" != "govwifi_eapoltest (${VERSION})" ]; then
-            gem build govwifi_eapoltest.gemspec
-            gem push "govwifi_eapoltest-${VERSION}.gem"
-          fi
 
           if ! git ls-remote --tags --exit-code origin v${VERSION}; then
             git tag v${VERSION}
