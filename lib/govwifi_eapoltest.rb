@@ -10,9 +10,10 @@ class GovwifiEapoltest
   EAP_TLS_TEMPLATE_PATH = "#{File.dirname(__FILE__)}/../templates/eap-tls.conf.erb".freeze
   SSID = "GovWifi"
 
-  def initialize(radius_ips:, secret:)
+  def initialize(radius_ips:, secret:, client_mac: nil)
     @radius_ips = radius_ips
     @secret = secret
+    @client_mac = client_mac
   end
 
   def run_peap_mschapv2(username:, password:, server_cert_path: nil, tls_version: :tls1_2)
@@ -53,7 +54,12 @@ private
     file.write ERB.new(File.read(config_template_path), trim_mode: "-").result_with_hash(variables)
     file.close
     @radius_ips.map do |radius_ip|
-      Services.eapol_test.run(config_file_path: file.path, radius_ip:, secret: @secret)
+      Services.eapol_test.run(
+        config_file_path: file.path,
+        radius_ip:,
+        secret: @secret,
+        client_mac: @client_mac
+      )
     end
   ensure
     file.unlink
