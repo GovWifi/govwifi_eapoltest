@@ -4,10 +4,21 @@ This Gem is used to test FreeRADIUS installations
 
 ## Usage
 
-Initialize the test with\
+Initialize the test with:
 ```ruby
-eapol_test = GovwifiEapoltest.new(radius_ips: ["10.0.0.1", "10.0.0.2"], 
-                                  secret: "mysecret")
+eapol_test = GovwifiEapoltest.new(
+  radius_ips: ["10.0.0.1", "10.0.0.2"], 
+  secret: "mysecret"
+)
+```
+
+By default, the client MAC address used is `f5:23:78:27:71:2c`. You can override this by passing the optional `client_mac` parameter:
+```ruby
+eapol_test = GovwifiEapoltest.new(
+  radius_ips: ["10.0.0.1", "10.0.0.2"], 
+  secret: "mysecret",
+  client_mac: "00:11:22:33:44:55"
+)
 ```
 
 And then to run a PEAP MSCHAP test run:
