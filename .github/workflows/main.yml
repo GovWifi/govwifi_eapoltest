@@ -23,7 +23,11 @@ jobs:
   release:
     needs: lint-and-test
     runs-on: ubuntu-latest
-    if: ${{ github.ref == 'refs/heads/main' }}
+    # This hasn't worked for a while so I'm disabling this for now. Other
+    # projects e.g. govwifi-smoke-tests and govwifi-acceptance-tests refer
+    # directly to the repository in the GEM file nowadays.
+    if: false
+    #if: ${{ github.ref == 'refs/heads/main' }}
     permissions:
       contents: write
     steps:

@@ -33,4 +33,29 @@ expect(output).to have_been_successful
 expect(output).to have_failed
 ```
 
+## Development
+
+A Makefile is provided to assist with local development:
+
+- **Install dependencies**:
+  ```bash
+  make install
+  ```
+  By default, it uses `bundle`. If you need to specify a custom bundler (e.g., using `rbenv`):
+  ```bash
+  make install BUNDLER="rbenv exec bundle"
+  ```
+
+- **Run linter (RuboCop)**:
+  ```bash
+  make lint
+  ```
+
+- **Run tests (RSpec)**:
+  ```bash
+  make test
+  ```
+
+## License
+
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
