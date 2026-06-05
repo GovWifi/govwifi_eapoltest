@@ -58,7 +58,7 @@ private
         config_file_path: file.path,
         radius_ip:,
         secret: @secret,
-        client_mac: @client_mac
+        client_mac: @client_mac,
       )
     end
   ensure
