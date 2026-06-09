@@ -136,10 +136,16 @@ describe GovwifiEapoltest do
       expect(fake_eapol_test.client_mac).to be_nil
     end
 
-    it "passes the client_mac if provided at initialization" do
-      mac_eapol_test = GovwifiEapoltest.new(radius_ips:, secret:, client_mac: "00:11:22:33:44:55")
-      mac_eapol_test.run_peap_mschapv2(server_cert_path:, username:, password:)
+    it "passes the client_mac if provided to run_peap_mschapv2" do
+      mac_eapol_test = GovwifiEapoltest.new(radius_ips:, secret:)
+      mac_eapol_test.run_peap_mschapv2(server_cert_path:, username:, password:, client_mac: "00:11:22:33:44:55")
       expect(fake_eapol_test.client_mac).to eq("00:11:22:33:44:55")
+    end
+
+    it "passes the client_mac if provided to run_eap_tls" do
+      mac_eapol_test = GovwifiEapoltest.new(radius_ips:, secret:)
+      mac_eapol_test.run_eap_tls(server_cert_path:, client_cert_path: "/path/to/client_cert.pem", client_key_path: "/path/to/client_key.pem", client_mac: "00:11:22:33:44:56")
+      expect(fake_eapol_test.client_mac).to eq("00:11:22:33:44:56")
     end
   end
 end
