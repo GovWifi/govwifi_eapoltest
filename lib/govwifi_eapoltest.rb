@@ -10,9 +10,10 @@ class GovwifiEapoltest
   EAP_TLS_TEMPLATE_PATH = "#{File.dirname(__FILE__)}/../templates/eap-tls.conf.erb".freeze
   SSID = "GovWifi"
 
-  def initialize(radius_ips:, secret:)
+  def initialize(radius_ips:, secret:, client_mac: nil)
     @radius_ips = radius_ips
     @secret = secret
+    @client_mac = client_mac
   end
 
   def run_peap_mschapv2(username:, password:, server_cert_path: nil, tls_version: :tls1_2, client_mac: nil)
