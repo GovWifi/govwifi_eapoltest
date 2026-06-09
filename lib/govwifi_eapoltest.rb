@@ -31,7 +31,7 @@ class GovwifiEapoltest
       password:,
       server_cert_path:,
       phase1:,
-      client_mac:
+      client_mac:,
     }
 
     run_eapol(PEAP_MSCHAP_TEMPLATE_PATH, variables:)
